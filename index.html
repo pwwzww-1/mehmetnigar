@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Günay xanım & Mehmet ❤️</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            min-height: 100vh;
+            background: linear-gradient(145deg, #1a0b1f 0%, #2d1b33 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+        /* Kalpler ve güller için arka plan animasyonu */
+        .bg-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        .heart, .rose {
+            position: absolute;
+            font-size: 2rem;
+            animation: floatUp linear infinite;
+            opacity: 0;
+            user-select: none;
+        }
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) scale(0.5) rotate(0deg);
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-10vh) scale(1.2) rotate(720deg);
+                opacity: 0;
+            }
+        }
+        .container {
+            position: relative;
+            z-index: 10;
+            background: rgba(255, 220, 240, 0.15);
+            backdrop-filter: blur(12px);
+            border-radius: 60px 60px 30px 30px;
+            padding: 3rem 4rem;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.7), 0 0 0 2px rgba(255, 150, 200, 0.3);
+            text-align: center;
+            max-width: 700px;
+            width: 90%;
+            border: 1px solid rgba(255, 200, 230, 0.3);
+            animation: glowPulse 3s infinite alternate;
+        }
+        @keyframes glowPulse {
+            0% { box-shadow: 0 30px 60px rgba(255, 0, 100, 0.3); }
+            100% { box-shadow: 0 30px 80px rgba(255, 0, 150, 0.6); }
+        }
+        h1 {
+            font-size: 2.8rem;
+            color: #ffb6d9;
+            text-shadow: 0 0 20px #ff4d94, 0 0 40px #ff1a75, 0 0 80px #cc0055;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            font-family: 'Georgia', serif;
+        }
+        .subtitle {
+            font-size: 1.6rem;
+            color: #ff99cc;
+            text-shadow: 0 0 15px #ff66aa;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+        .question {
+            font-size: 2.2rem;
+            color: #ffffff;
+            background: rgba(255, 80, 150, 0.2);
+            padding: 1.2rem 2rem;
+            border-radius: 50px;
+            border: 2px solid #ff66aa;
+            box-shadow: 0 0 30px rgba(255, 0, 100, 0.3);
+            margin-bottom: 2.5rem;
+            font-weight: 600;
+            text-shadow: 0 0 20px #ff3399;
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+        .btn {
+            font-size: 2.5rem;
+            padding: 0.8rem 3.5rem;
+            border: none;
+            border-radius: 60px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-yes {
+            background: linear-gradient(145deg, #ff4d94, #cc0066);
+            color: white;
+            text-shadow: 0 0 20px #ff99cc;
+        }
+        .btn-yes:hover {
+            transform: scale(1.1) rotate(-2deg);
+            box-shadow: 0 0 40px #ff4d94;
+        }
+        .btn-no {
+            background: linear-gradient(145deg, #666, #333);
+            color: #ddd;
+            text-shadow: 0 0 10px #888;
+        }
+        .btn-no:hover {
+            transform: scale(0.9) rotate(2deg);
+            box-shadow: 0 0 40px #ff3333;
+            background: linear-gradient(145deg, #aa3333, #661111);
+            color: white;
+        }
+        .message-box {
+            margin-top: 2.5rem;
+            padding: 1.5rem;
+            border-radius: 40px;
+            background: rgba(0,0,0,0.4);
+            border: 2px solid #ff66aa;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: #ffd9ee;
+            font-weight: 500;
+            transition: all 0.5s ease;
+            backdrop-filter: blur(4px);
+        }
+        .music-note {
+            font-size: 2rem;
+            margin: 0 10px;
+            animation: musicDance 0.8s infinite alternate;
+        }
+        @keyframes musicDance {
+            0% { transform: scale(1) rotate(0deg); }
+            100% { transform: scale(1.3) rotate(15deg); }
+        }
+        .footer-message {
+            margin-top: 2rem;
+            font-size: 1.2rem;
+            color: #ffaacc;
+            opacity: 0.8;
+            font-style: italic;
+            border-top: 1px solid rgba(255,150,200,0.3);
+            padding-top: 1.5rem;
+        }
+        /* Responsive */
+        @media (max-width: 600px) {
+            .container { padding: 2rem 1.5rem; }
+            h1 { font-size: 2rem; }
+            .question { font-size: 1.5rem; padding: 1rem; }
+            .btn { font-size: 1.8rem; padding: 0.6rem 2rem; }
+            .buttons { gap: 1.5rem; }
+        }
+        /* Kaçan "Yox" butonu için */
+        .btn-no-run {
+            position: relative;
+            transition: all 0.1s ease;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Arka plan için akan kalpler ve güller -->
+<div class="bg-hearts" id="bgHearts"></div>
+
+<div class="container" id="mainContainer">
+    <h1>💖 Günay xanım 💖</h1>
+    <div class="subtitle">✨ &amp; ✨</div>
+    <div class="subtitle" style="font-size:1.8rem; color:#ffccdd;">Mehmet</div>
+
+    <div class="question" id="questionText">
+        ❓ Günay xanım, Mehmet'i affedirsiniz? ❓
+    </div>
+
+    <div class="buttons" id="buttonGroup">
+        <button class="btn btn-yes" id="btnYes">❤️ BƏLİ ❤️</button>
+        <button class="btn btn-no" id="btnNo">💔 YOX 💔</button>
+    </div>
+
+    <div class="message-box" id="messageBox">
+        <span class="music-note">🎵</span>
+        Səbir... ❤️
+        <span class="music-note">🎵</span>
+    </div>
+
+    <div class="footer-message" id="footerMessage">
+        ❤️ Sevgi hər şeyi bağışlar... ❤️
+    </div>
+</div>
+
+<script>
+    (function() {
+        // ===== KONFIG =====
+        const CONFIG = {
+            // Müzik dosyası (opsiyonel) - SİZİN MP3 LİNKİNİZİ YAZIN
+            musicUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3', // DEĞİŞTİR
+            // Arka plan emojileri
+            bgEmojis: ['💖', '❤️', '🌹', '🥀', '💗', '🌸', '💕', '🌺', '💞', '🌷'],
+            // Mesajlar
+            messages: {
+                firstYes: '🎉🎊 Günay xanım Mehmet\'i AFF ETTİ! 🎊🎉\n💕 Güllər, ürəklər yağır! 💕\n🎵 Musiqi çalır! 🎵',
+                firstNo: '😢 Günay xanım hələ bağışlamadı...\n💔 Amma ümid var!\n❓ Yenə soruşaq? ❓',
+                secondNo: '🌧️ Günay xanım, ürəyiniz hələ sərtdir...\n💔 Amma sevgi səbirlidir!\n❓ Bir daha? ❓',
+                thirdNo: '🌊 ALLAHIN HAQQI ÜÇÜN BAĞIŞLA! 🌊\n❤️ Hər kəs səhv edə bilər! ❤️',
+                finalYes: '🌍💖 AFRIKADAKİ AÇ UŞAQLARI DÜŞÜNDÜK VƏ BARIŞDIQ! 💖🌍\n🕊️ Dünyaya sevgi yayılsın! 🕊️\n🎵 Sonsuz musiqi! 🎵'
+            }
+        };
+
+        // ===== DOM ELEMENTLERİ =====
+        const btnYes = document.getElementById('btnYes');
+        const btnNo = document.getElementById('btnNo');
+        const questionText = document.getElementById('questionText');
+        const messageBox = document.getElementById('messageBox');
+        const footerMessage = document.getElementById('footerMessage');
+        const bgHearts = document.getElementById('bgHearts');
+
+        // ===== DURUM =====
+        let state = {
+            noCount: 0,          // kaç dəfə yox basıldı
+            isFinalYes: false,
+            musicPlaying: false,
+            audio: null
+        };
+
+        // ===== ARKA PLAN EMOJİ YAĞDIRMA =====
+        function createFallingEmoji() {
+            const el = document.createElement('div');
+            el.classList.add('heart');
+            const emoji = CONFIG.bgEmojis[Math.floor(Math.random() * CONFIG.bgEmojis.length)];
+            el.textContent = emoji;
+            el.style.left = Math.random() * 100 + '%';
+            el.style.fontSize = (Math.random() * 2 + 1.5) + 'rem';
+            el.style.animationDuration = (Math.random() * 8 + 8) + 's';
+            el.style.animationDelay = (Math.random() * 6) + 's';
+            bgHearts.appendChild(el);
+
+            // Avtomatik təmizləmə (performans)
+            setTimeout(() => {
+                if (el.parentNode) el.remove();
+            }, 20000);
+        }
+
+        // Hər 0.5 saniyədə bir emoji
+        setInterval(createFallingEmoji, 400);
+        // İlk başlanğıc üçün
+        for (let i = 0; i < 20; i++) {
+            setTimeout(createFallingEmoji, i * 200);
+        }
+
+        // ===== MUSİQİ =====
+        function playMusic() {
+            if (state.musicPlaying) return;
+            try {
+                state.audio = new Audio(CONFIG.musicUrl);
+                state.audio.loop = true;
+                state.audio.volume = 0.5;
+                state.audio.play().then(() => {
+                    state.musicPlaying = true;
+                }).catch(() => {
+                    // Autoplay bloklanarsa
+                    messageBox.innerHTML = '🎵 Musiqi üçün səhifəyə klik edin 🎵';
+                    document.addEventListener('click', function playOnClick() {
+                        if (!state.musicPlaying && state.audio) {
+                            state.audio.play().catch(()=>{});
+                            state.musicPlaying = true;
+                        }
+                        document.removeEventListener('click', playOnClick);
+                    });
+                });
+            } catch(e) {
+                console.warn('Musiqi başlatılamadı.');
+            }
+        }
+
+        // ===== EMOJİ YAĞDIRMA (BOL) =====
+        function rainEmojis(count = 50) {
+            for (let i = 0; i < count; i++) {
+                setTimeout(createFallingEmoji, i * 80);
+            }
+        }
+
+        // ===== MESAJ GÖSTER =====
+        function setMessage(text, emoji = '💬') {
+            messageBox.innerHTML = `<span class="music-note">${emoji}</span> ${text} <span class="music-note">${emoji}</span>`;
+        }
+
+        // ===== "BƏLİ" DÜYMƏSİ =====
+        function handleYes() {
+            if (state.isFinalYes) {
+                // Artıq finalda, heç nə dəyişmə
+                return;
+            }
+
+            if (state.noCount === 0) {
+                // İlk dəfə Bəli
+                setMessage(CONFIG.messages.firstYes, '🎉');
+                questionText.innerHTML = '❤️ Günay xanım AFF ETTİ! ❤️';
+                footerMessage.innerHTML = '💖 Sevgi qazandı! 💖';
+                rainEmojis(80);
+                playMusic();
+                state.isFinalYes = true;
+                btnYes.disabled = true;
+                btnNo.disabled = true;
+                btnYes.style.opacity = '0.6';
+                btnNo.style.opacity = '0.6';
+                // Final yazısı
+                setTimeout(() => {
+                    setMessage(CONFIG.messages.finalYes, '🌍');
+                    footerMessage.innerHTML = '🕊️ Barış və sevgi daim olsun! 🕊️';
+                    rainEmojis(120);
+                }, 3000);
+                return;
+            }
+
+            if (state.noCount === 1) {
+                // 1 dəfə yoxdan sonra bəli
+                setMessage(CONFIG.messages.firstYes, '🎉');
+                questionText.innerHTML = '❤️ AFF OLUNDU! ❤️';
+                footerMessage.innerHTML = '💕 İkinci şans hər şeyi dəyişdi! 💕';
+                rainEmojis(80);
+                playMusic();
+                state.isFinalYes = true;
+                btnYes.disabled = true;
+                btnNo.disabled = true;
+                btnYes.style.opacity = '0.6';
+                btnNo.style.opacity = '0.6';
+                setTimeout(() => {
+                    setMessage(CONFIG.messages.finalYes, '🌍');
+                    footerMessage.innerHTML = '🕊️ Barış və sevgi daim olsun! 🕊️';
+                    rainEmojis(120);
+                }, 3000);
+                return;
+            }
+
+            if (state.noCount === 2) {
+                // 2 dəfə yoxdan sonra bəli
+                setMessage(CONFIG.messages.firstYes, '🎉');
+                questionText.innerHTML = '❤️ NƏHAYƏT AFF OLUNDU! ❤️';
+                footerMessage.innerHTML = '💞 Üçüncü dəfə oldu! 💞';
+                rainEmojis(80);
+                playMusic();
+                state.isFinalYes = true;
+                btnYes.disabled = true;
+                btnNo.disabled = true;
+                btnYes.style.opacity = '0.6';
+                btnNo.style.opacity = '0.6';
+                setTimeout(() => {
+                    setMessage(CONFIG.messages.finalYes, '🌍');
+                    footerMessage.innerHTML = '🕊️ Barış və sevgi daim olsun! 🕊️';
+                    rainEmojis(120);
+                }, 3000);
+                return;
+            }
+
+            // noCount >= 3 (üçüncü yoxdan sonra gələn bəli)
+            // Bu zaman artıq final mesajı göstərilir, amma təhlükəsizlik üçün
+            setMessage(CONFIG.messages.firstYes, '🎉');
+            questionText.innerHTML = '❤️ AFF EDİLDİ! ❤️';
+            footerMessage.innerHTML = '💖 Sonsuz sevgi! 💖';
+            rainEmojis(100);
+            playMusic();
+            state.isFinalYes = true;
+            btnYes.disabled = true;
+            btnNo.disabled = true;
+            btnYes.style.opacity = '0.6';
+            btnNo.style.opacity = '0.6';
+            setTimeout(() => {
+                setMessage(CONFIG.messages.finalYes, '🌍');
+                footerMessage.innerHTML = '🕊️ Barış və sevgi daim olsun! 🕊️';
+                rainEmojis(120);
+            }, 3000);
+        }
+
+        // ===== "YOX" DÜYMƏSİ =====
+        function handleNo() {
+            if (state.isFinalYes) return; // Artıq final
+
+            state.noCount++;
+
+            if (state.noCount === 1) {
+                // İlk yox
+                setMessage(CONFIG.messages.firstNo, '😢');
+                questionText.innerHTML = '❓ Günay xanım, bir daha düşünün? ❓';
+                footerMessage.innerHTML = '💔 Ürəklər qırılmasın...';
+                rainEmojis(20);
+                // "Yox" düyməsi qaçmağa başlasın
+                btnNo.classList.add('btn-no-run');
+                btnNo.style.position = 'relative';
+                btnNo.style.transition = 'all 0.3s ease';
+                return;
+            }
+
+            if (state.noCount === 2) {
+                // İkinci yox
+                setMessage(CONFIG.messages.secondNo, '🌧️');
+                questionText.innerHTML = '❓ Günay xanım, bəlkə yenə düşünəsiniz? ❓';
+                footerMessage.innerHTML = '🌹 Sevgi səbir istəyir...';
+                rainEmojis(30);
+                // Yox düyməsi daha da qaçsın
+                btnNo.style.transform = 'scale(0.8)';
+                btnNo.style.marginLeft = '20px';
+                return;
+            }
+
+            if (state.noCount === 3) {
+                // Üçüncü yox - ALLAH HAQQI
+                setMessage(CONFIG.messages.thirdNo, '🌊');
+                questionText.innerHTML = '🌊 ALLAHIN HAQQI ÜÇÜN BAĞIŞLA! 🌊';
+                footerMessage.innerHTML = '❤️ Hər kəs səhv edə bilər! ❤️';
+                rainEmojis(50);
+                // Yox düyməsi çox qaçsın
+                btnNo.style.transform = 'scale(0.6)';
+                btnNo.style.marginLeft = '40px';
+                // 3 saniyə sonra döngü yenilənsin
+                setTimeout(() => {
+                    // Döngünü yenidən başlat - eyni sualı soralım
+                    setMessage('💬 Günay xanım, yenə sual: Mehmet\'i affedirsiniz?', '❓');
+                    questionText.innerHTML = '❓ Günay xanım, Mehmet\'i affedirsiniz? ❓';
+                    footerMessage.innerHTML = '❤️ Sevgi hər şeyə dəyər! ❤️';
+                    // Düymələri sıfırla
+                    btnNo.style.transform = 'scale(1)';
+                    btnNo.style.marginLeft = '0';
+                    // Yeni döngü: noCount 1-ə qayıdır amma mesaj fərqli olur
+                    state.noCount = 1; // 1 yox sayılır (3-cü yoxdan sonra geri)
+                    // Fərqli mətn
+                    setMessage('💬 Günay xanım, nə deyirsiniz?', '🤔');
+                    questionText.innerHTML = '❓ Mehmet\'i bağışlaya bilərsiniz? ❓';
+                    footerMessage.innerHTML = '🌟 Hər an yeni başlanğıcdır! 🌟';
+                }, 4000);
+                return;
+            }
+
+            // noCount > 3 olduqda (sonsuz döngü) - eyni sual təkrarlanır
+            // Amma yuxarıda noCount 1-ə qayıtdı, bura çatmaz
+            // Təhlükəsizlik üçün:
+            setMessage('💬 Günay xanım, bir düşünün...', '💭');
+            questionText.innerHTML = '❓ Mehmet\'i affedirsiniz? ❓';
+            footerMessage.innerHTML = '💫 Sonsuz sevgi döngüsü...';
+            rainEmojis(15);
+            // Düymələri normallaşdır
+            btnNo.style.transform = 'scale(1)';
+            btnNo.style.marginLeft = '0';
+            state.noCount = 1;
+        }
+
+        // ===== DÜYMƏLƏRİ BAĞLA =====
+        btnYes.addEventListener('click', handleYes);
+        btnNo.addEventListener('click', handleNo);
+
+        // ===== YOX DÜYMƏSİ QAÇSIN (mouse hover) =====
+        btnNo.addEventListener('mouseenter', function(e) {
+            if (state.isFinalYes) return;
+            // Rastgele yerləşdir
+            const containerRect = document.getElementById('mainContainer').getBoundingClientRect();
+            const btnRect = this.getBoundingClientRect();
+            const maxX = containerRect.width - btnRect.width - 20;
+            const maxY = containerRect.height - btnRect.height - 20;
+            const newX = Math.random() * maxX;
+            const newY = Math.random() * maxY;
+            this.style.position = 'relative';
+            this.style.left = newX + 'px';
+            this.style.top = newY + 'px';
+            this.style.transition = 'all 0.2s ease';
+        });
+
+        // Mobil cihazlar üçün - toxunma ilə qaçsın
+        btnNo.addEventListener('touchstart', function(e) {
+            if (state.isFinalYes) return;
+            e.preventDefault();
+            const containerRect = document.getElementById('mainContainer').getBoundingClientRect();
+            const btnRect = this.getBoundingClientRect();
+            const maxX = containerRect.width - btnRect.width - 20;
+            const maxY = containerRect.height - btnRect.height - 20;
+            const newX = Math.random() * maxX;
+            const newY = Math.random() * maxY;
+            this.style.position = 'relative';
+            this.style.left = newX + 'px';
+            this.style.top = newY + 'px';
+            this.style.transition = 'all 0.2s ease';
+        });
+
+        // ===== BAŞLANĞIÇ MESAJI =====
+        setMessage('💖 Günay xanım, qərarınız nədir?', '💌');
+        console.log('HILE ROMANTİK SAYFA HAZIR - PATRON!');
+
+        // ===== SƏHİFƏ YÜKLƏNDİKDƏ BİR AZ EMOJİ =====
+        setTimeout(() => rainEmojis(30), 500);
+    })();
+</script>
+
+</body>
+</html>
